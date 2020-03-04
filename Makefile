@@ -9,9 +9,9 @@ LIB		:= lib
 LIBRARIES	:=
 
 ifeq ($(OS),Windows_NT)
-EXECUTABLE	:= shrad.exe
+EXECUTABLE	:= unshradder.exe
 else
-EXECUTABLE	:= shrad
+EXECUTABLE	:= out
 endif
 
 all: $(BIN)/$(EXECUTABLE)

@@ -43,5 +43,5 @@ void create_dict(unordered_map<string, int>& corpus)
     corpus["count"]++;
   }
   file.close();
-  cout << "===OUT=== Done with the dictionary" << endl;
+  cout << "===OUT=== Creating a dictionary DONE" << endl;
 }
