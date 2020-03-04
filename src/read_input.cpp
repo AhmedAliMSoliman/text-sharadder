@@ -4,7 +4,7 @@
 void read_input(vector<vector<string> >& input)
 {
   cout << "===OUT=== Reading started ... " << endl;
-  ifstream file("soundhound.txt");
+  ifstream file("assets/soundhound.txt");
   string line;
 
   while(getline(file, line)){

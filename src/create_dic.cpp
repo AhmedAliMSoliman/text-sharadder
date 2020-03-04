@@ -5,7 +5,7 @@ void create_dict(unordered_map<string, int>& corpus)
 {
 
   cout << "===OUT=== Creating a dictionary" << endl;
-  ifstream file("dict.txt");
+  ifstream file("assets/dict.txt");
   string str("");
   char c, prev;
   file.get(prev);
