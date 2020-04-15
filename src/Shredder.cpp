@@ -8,7 +8,7 @@ using namespace std;
 void Shredder::CreatDict(unordered_map<string, int>& corpus)
 {
   cout << "Creating a dictionary" << endl;
-  ifstream dict_file("../includes/dict.txt");
+  ifstream dict_file(kDicttionarySmall);
   string str("");
   char c, prev;
   dict_file.get(prev);
@@ -62,7 +62,7 @@ float Shredder::Probability(std::unordered_map<std::string , int>& corpus , std:
 
 void Shredder::ReadInput(std::vector<std::vector<std::string>>& input)
 {
-  ifstream file("../includes/input.txt");
+  ifstream file(kInputHcl);
   string line;
 
   while(getline(file, line))

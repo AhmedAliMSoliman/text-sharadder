@@ -5,6 +5,13 @@
 class Shredder
 {
 public: 
+    const std::string kDicttionarySmall{"../includes/dict.txt"};
+    const std::string kDicttionaryBig{"../includes/big.txt"};
+    const std::string kInputFile1{"../includes/input.txt"};
+    const std::string kInputFile2{"../includes/input2.txt"};
+    const std::string kInputHcl{"../includes/hcl.txt"};
+
+public: 
     //Creating dic of 4-grams with its frequency distrubition 
     void CreatDict(std::unordered_map<std::string, int>& corpus);
 
