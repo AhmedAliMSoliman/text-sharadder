@@ -2,6 +2,7 @@
 
 #include "Shredder.h"
 
+
 using namespace std;
 
 void Shredder::CreatDict(unordered_map<string, int>& corpus)
@@ -50,9 +51,42 @@ void Shredder::CreatDict(unordered_map<string, int>& corpus)
   cout << "Done with the dictionary" << endl;
 }
 
+
 float Shredder::Probability(std::unordered_map<std::string , int>& corpus , std::string str)
 {
   return float((float)(corpus[str]+1) / (float)(corpus.size() + corpus["count"]));
 
   cout << "Out of Probbility function!" << std::endl;
+}
+
+
+void Shredder::ReadInput(std::vector<std::vector<std::string>>& input)
+{
+  ifstream file("../includes/input.txt");
+  string line;
+
+  while(getline(file, line))
+  {
+    vector<string> temp;
+    size_t new_pos, pos = 0;
+
+    while(pos < line.size())
+    {
+      new_pos = line.find_first_of("|", pos);
+      if (pos != new_pos)
+      {
+        temp.push_back(line.substr(pos, new_pos - pos));
+      }
+      pos = new_pos + 1;
+    }
+    input.push_back(temp);
+
+    for (int i = 0 ; i < temp.size() ; i++)
+    {
+      cout << temp[i] << endl;
+    }
+  }
+  file.close();
+
+  cout << "Out of Read Input function!" << std::endl;
 }

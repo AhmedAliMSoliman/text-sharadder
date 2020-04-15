@@ -8,4 +8,6 @@ int main()
     Shredder shradder;
     shradder.CreatDict(corpus);
 
+    std::vector<std::vector<std::string>> input;
+    shradder.ReadInput(input);
 }
