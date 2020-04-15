@@ -7,4 +7,5 @@ int main()
 
     Shredder shradder;
     shradder.CreatDict(corpus);
+
 }

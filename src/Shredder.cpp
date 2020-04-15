@@ -7,17 +7,17 @@ using namespace std;
 void Shredder::CreatDict(unordered_map<string, int>& corpus)
 {
   cout << "Creating a dictionary" << endl;
-  ifstream file("/root/ahmed/Repositories-Mine/text-sharadder/includes/dict.txt");
+  ifstream dict_file("../includes/dict.txt");
   string str("");
   char c, prev;
-  file.get(prev);
+  dict_file.get(prev);
   str += prev;
   for( uint i=1; i< 4; ++i)
   {
-    file.get(c);
+    dict_file.get(c);
     if(prev == ' ' && c == ' ')
     {
-      while(file.get(c))
+      while(dict_file.get(c))
       {
         if(c != prev)
         break;
@@ -29,16 +29,13 @@ void Shredder::CreatDict(unordered_map<string, int>& corpus)
 
   corpus[str]++;
   corpus["count"]++;
-  while(file.get(c))
+  while(dict_file.get(c))
   {
     if( prev == ' ' && c == ' ')
     {
-      while(file.get(c))
+      while(dict_file.get(c))
       {
-        if(c != prev)
-        {
-	        break;
-        }
+        if(c != prev) { break; }
       }
     }
     
@@ -49,6 +46,13 @@ void Shredder::CreatDict(unordered_map<string, int>& corpus)
     corpus["count"]++;
   }
 
-  file.close();
+  dict_file.close();
   cout << "Done with the dictionary" << endl;
+}
+
+float Shredder::Probability(std::unordered_map<std::string , int>& corpus , std::string str)
+{
+  return float((float)(corpus[str]+1) / (float)(corpus.size() + corpus["count"]));
+
+  cout << "Out of Probbility function!" << std::endl;
 }
