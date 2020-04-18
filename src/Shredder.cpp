@@ -102,3 +102,17 @@ float Shredder::StripCorrction(std::unordered_map<std::string, int>& corpus, std
   // std::cout << "Out of strip correction function! , with prod = " << prod << std::endl;
   return prod;
 }
+
+
+void Shredder::PrintVector(const std::vector<std::vector<std::string>>& input)
+{
+    for(uint i=0; i< input.size(); ++i)
+    {
+      for( uint j=0; j< input[i].size(); ++j)
+        {
+          std::cout << "(" << input[i][j] << ")" ;
+        }
+      std::cout << std::endl;
+    }
+   std::cout << "Out of print vector func " << std::endl;
+}
