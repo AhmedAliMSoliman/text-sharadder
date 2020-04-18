@@ -1,12 +1,17 @@
 #include <fstream>
+#include <vector>
+#include <unordered_map>
 #include<bits/stdc++.h> 
-
-#include "Shredder.h"
-
 
 using namespace std;
 
-void Shredder::CreatDict(unordered_map<string, int>& corpus)
+const std::string kDicttionarySmall{"../includes/dict.txt"};
+const std::string kDicttionaryBig{"../includes/big.txt"};
+const std::string kInputFile1{"../includes/input.txt"};
+const std::string kInputFile2{"../includes/input2.txt"};
+const std::string kInputHcl{"../includes/hcl.txt"};
+
+void CreatDict(unordered_map<string, int>& corpus)
 {
   cout << "Creating a dictionary" << endl;
   ifstream dict_file(kDicttionarySmall);
@@ -53,7 +58,7 @@ void Shredder::CreatDict(unordered_map<string, int>& corpus)
 }
 
 
-float Shredder::Probability(std::unordered_map<std::string , int>& corpus , std::string str)
+float Probability(std::unordered_map<std::string , int>& corpus , std::string str)
 {
   return float((float)(corpus[str]+1) / (float)(corpus.size() + corpus["count"]));
 
@@ -61,7 +66,7 @@ float Shredder::Probability(std::unordered_map<std::string , int>& corpus , std:
 }
 
 
-void Shredder::ReadInput(std::vector<std::vector<std::string>>& input)
+void ReadInput(std::vector<std::vector<std::string>>& input)
 {
   ifstream file(kInputHcl);
   string line;
@@ -93,7 +98,7 @@ void Shredder::ReadInput(std::vector<std::vector<std::string>>& input)
 }
 
 
-float Shredder::StripCorrction(std::unordered_map<std::string, int>& corpus, std::vector<std::string> left, std::vector<std::string> right)
+float StripCorrction(std::unordered_map<std::string, int>& corpus, std::vector<std::string> left, std::vector<std::string> right)
 {
   float prod = 1;
   for( uint i=0; i< left.size(); ++i)
@@ -105,7 +110,7 @@ float Shredder::StripCorrction(std::unordered_map<std::string, int>& corpus, std
 }
 
 
-void Shredder::PrintVector(const std::vector<std::vector<std::string>>& input)
+void PrintVector(const std::vector<std::vector<std::string>>& input)
 {
     for(uint i=0; i< input.size(); ++i)
     {
@@ -119,7 +124,7 @@ void Shredder::PrintVector(const std::vector<std::vector<std::string>>& input)
 }
 
 
-void Shredder::DisplayOut(const std::vector<std::vector<std::string> >& input)
+void DisplayOut(const std::vector<std::vector<std::string> >& input)
 {
   for (uint i=0; i< input.size(); ++i)
   {
@@ -131,7 +136,7 @@ void Shredder::DisplayOut(const std::vector<std::vector<std::string> >& input)
   }
 }
 
-std::vector<std::vector<std::string>> Shredder::Reorder(std::unordered_map<std::string, int>& corpus, std::vector<std::vector<std::string> >& input)
+std::vector<std::vector<std::string>> Reorder(std::unordered_map<std::string, int>& corpus, std::vector<std::vector<std::string> >& input)
 {
   int ele1, ele2;
   float max_pair_prob = float(-INT_MAX);
@@ -205,7 +210,7 @@ std::vector<std::vector<std::string>> Shredder::Reorder(std::unordered_map<std::
 }
 
 
-std::vector<std::vector<std::string> > Shredder::TrasnposeMatrix(std::vector<std::vector<std::string> >& input)
+std::vector<std::vector<std::string> > TrasnposeMatrix(std::vector<std::vector<std::string> >& input)
 {
   uint height = input.size();
   uint width = input[0].size();
