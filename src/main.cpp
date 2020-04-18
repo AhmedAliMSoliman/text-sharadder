@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Shredder.h"
 
-int main() 
+int main()
 {
     std::unordered_map<std::string, int> corpus;
 
@@ -10,4 +10,9 @@ int main()
 
     std::vector<std::vector<std::string>> input;
     shradder.ReadInput(input);
+
+
+
+    //Testing
+    // shradder.StripCorrction(corpus, input[0], input[1]);
 }

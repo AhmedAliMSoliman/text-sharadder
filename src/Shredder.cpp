@@ -90,3 +90,15 @@ void Shredder::ReadInput(std::vector<std::vector<std::string>>& input)
 
   cout << "Out of Read Input function!" << std::endl;
 }
+
+
+float Shredder::StripCorrction(std::unordered_map<std::string, int>& corpus, std::vector<std::string> left, std::vector<std::string> right)
+{
+  float prod = 1;
+  for( uint i=0; i< left.size(); ++i)
+  {
+    prod *= Probability(corpus, (left[i]+right[i]) );
+  }
+  // std::cout << "Out of strip correction function! , with prod = " << prod << std::endl;
+  return prod;
+}

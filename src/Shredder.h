@@ -20,4 +20,7 @@ public:
 
     // Reads the srabled input data from ***.txt file 
     void ReadInput(std::vector<std::vector<std::string>>& input);
+
+    // Calculates and returns the probability of 2 rows being next to each other from the transposed input matrix
+    float StripCorrction(std::unordered_map<std::string, int>& corpus, std::vector<std::string> left, std::vector<std::string> right);
 };
