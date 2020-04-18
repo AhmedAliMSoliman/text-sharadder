@@ -29,4 +29,11 @@ public:
 
     //Displays the unscrambled output
     void DisplayOut(const std::vector<std::vector<std::string> >& input);
+    
+    // Takes in the transposed form of the original input data.
+    // Reorders the strips into corrected data.
+    std::vector<std::vector<std::string> > Reorder(std::unordered_map<std::string, int>& corpus, std::vector<std::vector<std::string> >& input);
+
+    //Transposes input matrix for ease of accessing each strips.
+    std::vector<std::vector<std::string> > TrasnposeMatrix(std::vector<std::vector<std::string> >& input);
 };

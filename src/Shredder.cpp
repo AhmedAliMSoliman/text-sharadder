@@ -1,4 +1,5 @@
 #include <fstream>
+#include<bits/stdc++.h> 
 
 #include "Shredder.h"
 
@@ -128,4 +129,97 @@ void Shredder::DisplayOut(const std::vector<std::vector<std::string> >& input)
     }
     std::cout << std::endl;
   }
+}
+
+std::vector<std::vector<std::string>> Shredder::Reorder(std::unordered_map<std::string, int>& corpus, std::vector<std::vector<std::string> >& input)
+{
+  int ele1, ele2;
+  float max_pair_prob = float(-INT_MAX);
+  vector<vector<string> > correct_strips;
+  for( uint i=0; i < input.size(); ++i)
+  {
+    for( uint j=0; j< input.size(); ++j)
+    {
+      if( i != j)
+      {
+        float pair_prob = StripCorrction(corpus, input[i], input[j]);
+	      if(pair_prob > max_pair_prob)
+        {
+          ele1 = i; ele2 = j;
+          max_pair_prob = pair_prob;
+        }
+      }
+    }
+  }
+  correct_strips.push_back(input[ele1]);
+  correct_strips.push_back(input[ele2]);
+  
+  if(ele1 > ele2)
+  {
+    input.erase(input.begin() + ele1);
+    input.erase(input.begin() + ele2);
+  }
+  else
+  {
+    input.erase(input.begin() + ele2);
+    input.erase(input.begin() + ele1);
+  }
+  
+  while(input.size())
+  {
+    float max_left = float(-INT_MAX);
+    float max_right = float(-INT_MAX);
+    int right_index;
+    int left_index;
+    int del_index;
+ 
+    for (uint i=0; i< input.size(); ++i)
+    {
+      float left_prob = StripCorrction(corpus, input[i], correct_strips[0]);
+      if(left_prob > max_left)
+      {
+        left_index = i;
+        max_left = left_prob;
+      }
+
+      float right_prob = StripCorrction(corpus, correct_strips[correct_strips.size()-1], input[i]);
+      if (right_prob > max_right)
+      {
+        right_index = i;
+        max_right = right_prob;
+      }
+    }
+    if (max_right >= max_left)
+    {
+      correct_strips.push_back(input[right_index]);
+      del_index = right_index;
+    }  
+    else
+    {
+      correct_strips.insert(correct_strips.begin(), input[left_index]);
+      del_index = left_index;
+    }
+    input.erase(input.begin()+del_index);
+  } 
+  return correct_strips;
+}
+
+
+std::vector<std::vector<std::string> > Shredder::TrasnposeMatrix(std::vector<std::vector<std::string> >& input)
+{
+  uint height = input.size();
+  uint width = input[0].size();
+  
+  std::vector<std::vector<std::string>> result;
+
+  for( uint i=0; i < width; ++i)
+  {
+    vector<string> temp;
+    for( uint j=0; j< height; ++j)
+    {
+      temp.push_back(input[j][i]);
+    }
+    result.push_back(temp);
+  }
+  return result;
 }
