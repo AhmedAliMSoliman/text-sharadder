@@ -116,3 +116,16 @@ void Shredder::PrintVector(const std::vector<std::vector<std::string>>& input)
     }
    std::cout << "Out of print vector func " << std::endl;
 }
+
+
+void Shredder::DisplayOut(const std::vector<std::vector<std::string> >& input)
+{
+  for (uint i=0; i< input.size(); ++i)
+  {
+    for (uint j=0; j< input[i].size(); ++j)
+    {
+      std::cout << input[i][j];
+    }
+    std::cout << std::endl;
+  }
+}

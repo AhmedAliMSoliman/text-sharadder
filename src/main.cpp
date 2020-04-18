@@ -15,6 +15,8 @@ int main()
 
 
 
+    // std::cout << std::endl;
     //Testing
     // shradder.StripCorrction(corpus, input[0], input[1]);
+    // shradder.DisplayOut(input);
 }

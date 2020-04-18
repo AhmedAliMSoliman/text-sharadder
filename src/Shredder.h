@@ -26,4 +26,7 @@ public:
 
     //Prints a vector of vector of strings
     void PrintVector(const std::vector<std::vector<std::string>>& input);
+
+    //Displays the unscrambled output
+    void DisplayOut(const std::vector<std::vector<std::string> >& input);
 };
