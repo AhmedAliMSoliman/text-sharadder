@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <fstream>
+#include <sstream>
 #include <unordered_map>
 
 class Shredder
